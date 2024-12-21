@@ -16,7 +16,7 @@ const submitHandler=async(e)=>{
     e.preventDefault()
     
     try {
-        const response=await fetch("http://localhost:3000/api/createpost",{
+        const response=await fetch("https://arogo-ai-7v3e.onrender.com/api/createpost",{
             method: 'post',
             headers: {
               'Content-Type': 'application/json'

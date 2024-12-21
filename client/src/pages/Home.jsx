@@ -10,7 +10,7 @@ const Home = () => {
 
         const getPosts=async()=>{
             try {
-                const results=await fetch('http://localhost:3000/api/getallblogs')
+                const results=await fetch('https://arogo-ai-7v3e.onrender.com/api/getallblogs')
                 const data=await results.json()
                 
                 if(data){

@@ -14,7 +14,7 @@ const params=useParams()
 useEffect(()=>{
   const getBlog=async()=>{
     try {
-      const result=await fetch(`http://localhost:3000/api/getspecific/${params.id}`)
+      const result=await fetch(`https://arogo-ai-7v3e.onrender.com/api/getspecific/${params.id}`)
       const data=await result.json()
 
       if(data){
@@ -44,7 +44,7 @@ const submitHandler=async(e)=>{
     
     
     try {
-        const response=await fetch(`http://localhost:3000/api/updateblog/${params.id}`,{
+        const response=await fetch(`https://arogo-ai-7v3e.onrender.com/api/updateblog/${params.id}`,{
             method: 'post',
             headers: {
               'Content-Type': 'application/json'

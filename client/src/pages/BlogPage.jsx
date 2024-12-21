@@ -8,7 +8,7 @@ const BlogPage = () => {
   useEffect(()=>{
     const getPost=async()=>{
       try {
-        const result=await fetch(`http://localhost:3000/api/getspecific/${params.id}`)
+        const result=await fetch(`https://arogo-ai-7v3e.onrender.com/api/getspecific/${params.id}`)
         const data=await result.json()
 
         if(data){
@@ -27,7 +27,7 @@ const BlogPage = () => {
   
   const deleteHandler=async()=>{
     try {
-    const res= await fetch(`http://localhost:3000/api/deleteblog/${params.id}`,{
+    const res= await fetch(`https://arogo-ai-7v3e.onrender.com/api/deleteblog/${params.id}`,{
       method:"delete"
     })
 
