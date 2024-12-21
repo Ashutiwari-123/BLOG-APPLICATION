@@ -2,15 +2,15 @@
 
 # Backend Installation
 
-Step-1: npm init
-Step-2:npm i express mongoose dotenv cors huggingface
-Step -3: Configure higging face api key
+Step-1: npm init <br/>
+Step-2:npm i express mongoose dotenv cors huggingface <br/>
+Step -3: Configure higging face api key <br/>
 
-# Frontend Installation
+# Frontend Installation 
 
-Step-1:npm create vite@latest client
+Step-1:npm create vite@latest client <br/>
 
-# AI Integration
-Step-1: Create account on hugging face 
-Step-2: Get an Api key from there
-Step-3: Integrate it into the backend
+# AI Integration for summary generation
+Step-1: Create account on hugging face <br/>
+Step-2: Get an Api key from there <br/>
+Step-3: Integrate it into the backend <br/>
