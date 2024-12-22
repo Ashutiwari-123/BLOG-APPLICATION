@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import BlogCard from '../components/BlogCard'
 import { useNavigate } from 'react-router-dom'
+import Loader from '../components/Loader'
 
 
 
 const Home = () => {
     const [posts,setPosts]=useState([])
     const navigate=useNavigate()
+    const [load,setLoad]=useState(false)
     useEffect(()=>{
 
         const getPosts=async()=>{
-            try {
+          try {
+              setLoad(true)
                 const results=await fetch('https://arogo-ai-7v3e.onrender.com/api/getallblogs')
                 const data=await results.json()
                 
                 if(data){
-                    console.log(data);
+                    // console.log(data);
+                    setLoad(false)
                     setPosts(data.blogs)
                 }
             } catch (error) {
@@ -32,11 +36,14 @@ const Home = () => {
 
   return (
     <div className="bg-white py-24 sm:py-32">
+    {
+      load?<Loader/>:
+    
     <div className="mx-auto max-w-7xl px-6 lg:px-8">
       <div className="mx-auto max-w-2xl md:max-w-6xl lg:mx-0">
         <div className='flex items-center justify-between '>
         <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Read Newest Blog</h2>
-        <button className='bg-green-500 text-white rounded-lg p-2 hover:bg-green-400' onClick={handleCreate}>Create New Blog</button>
+        <button className='bg-green-500 text-white rounded-lg p-2 hover:bg-green-400' onClick={handleCreate} >Create New Blog</button>
         </div>
         
         <p className="mt-2 text-lg/8 text-gray-600">Get updated by the things that are currently trending right now.</p>
@@ -47,6 +54,7 @@ const Home = () => {
         ))}
       </div>
     </div>
+      }
   </div>
   )
 }

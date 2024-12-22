@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Loader from '../components/Loader'
 // import Form from '../components/Form'
 
 const Create = () => {
@@ -9,7 +10,7 @@ const Create = () => {
     summary:"",
     author:"",
 })
-
+  const [load,setLoad]=useState(false)
 const navigate=useNavigate()
 
 
@@ -17,6 +18,7 @@ const submitHandler=async(e)=>{
     e.preventDefault()
     
     try {
+        setLoad(true)
         const response=await fetch("https://arogo-ai-7v3e.onrender.com/api/createpost",{
             method: 'post',
             headers: {
@@ -30,6 +32,7 @@ const submitHandler=async(e)=>{
         const data=await response.json()
 
         if(data){
+            setLoad(false)
             navigate('/')
         }
     } catch (error) {
@@ -40,6 +43,8 @@ const submitHandler=async(e)=>{
 }
   return (
     <div className='max-w-3xl mx-auto p-3'>
+      {
+        load?<Loader/>:
       <form onSubmit={submitHandler}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
@@ -121,6 +126,7 @@ const submitHandler=async(e)=>{
           </button>
         </div>
       </form>
+      }
     </div>
   )
 }
