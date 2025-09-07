@@ -16,10 +16,10 @@ const navigate=useNavigate()
 
 const submitHandler=async(e)=>{
     e.preventDefault()
-    
+
     try {
         setLoad(true)
-        const response=await fetch("https://arogo-ai-7v3e.onrender.com/api/createpost",{
+        const response=await fetch("https://blog-application-fps4.onrender.com/api/createpost",{
             method: 'post',
             headers: {
               'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ const submitHandler=async(e)=>{
             body: JSON.stringify({
               ...formData
             })
-            
+
         })
         const data=await response.json()
 
@@ -37,7 +37,7 @@ const submitHandler=async(e)=>{
         }
     } catch (error) {
         console.log("Error in sending blog data",error);
-        
+
     }
 
 }

@@ -16,18 +16,18 @@ const params=useParams()
 useEffect(()=>{
   const getBlog=async()=>{
     try {
-      const result=await fetch(`https://arogo-ai-7v3e.onrender.com/api/getspecific/${params.id}`)
+      const result=await fetch(`https://blog-application-fps4.onrender.com/api/getspecific/${params.id}`)
       const data=await result.json()
 
       if(data){
-        
+
         setFormData({...formData,title:data.blog.title,content:data.blog.content,author:data.blog.author})
         console.log(formData);
-        
+
       }
     } catch (error) {
       console.log("Erron in getting blogs from update form",error);
-      
+
     }
   }
   getBlog()
@@ -42,9 +42,9 @@ const submitHandler=async(e)=>{
 
     console.log(params.id);
     console.log(formData);
-    
-    
-    
+
+
+
     try {
         setLoad(true)
         const response=await fetch(`https://arogo-ai-7v3e.onrender.com/api/updateblog/${params.id}`,{
@@ -55,7 +55,7 @@ const submitHandler=async(e)=>{
             body: JSON.stringify({
               ...formData
             })
-            
+
         })
         const data=await response.json()
 
@@ -65,7 +65,7 @@ const submitHandler=async(e)=>{
         }
     } catch (error) {
         console.log("Error in sending blog data",error);
-        
+
     }
 
 }
@@ -137,7 +137,7 @@ const cancelHandler=()=>{
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, [e.target.id]: e.target.value })}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                    
+
                   />
                 </div>
                 <p className="mt-3 text-sm/6 text-gray-600">Draft your blog here.</p>
